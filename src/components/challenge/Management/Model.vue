@@ -1,10 +1,19 @@
 <template>
-  <b-modal id="modal-challenge-model" :title="title">
+  <b-modal id="modal-challenge-model" :title="title" size="xl">
     <form @submit.prevent="saveResource()">
-      <Common :model="model"/>
-      <hr>
-      <Static v-if="model.challenge_type===consts.Model.challenge.type.static"/>
-      <Dynamic :model="model" v-else/>
+      <div class="row">
+        <Common :model="model" class="col"/>
+        <!--        <hr>-->
+        <div class="col">
+          <Attachment :model="model"/>
+          <flag :model="model"/>
+        </div>
+        <!--        <hr>-->
+        <div class="col">
+          <Dynamic :model="model" v-if="model.challenge_type===consts.Model.challenge.type.dynamic"/>
+          <Static v-else/>
+        </div>
+      </div>
     </form>
   </b-modal>
 </template>
@@ -15,10 +24,12 @@ import lightweightRestful from "vue-lightweight_restful";
 import Common from "@/components/challenge/Management/Common";
 import Dynamic from "@/components/challenge/Management/Dynamic";
 import Static from "@/components/challenge/Management/Static";
+import Flag from "@/components/challenge/Management/Flag";
+import Attachment from "@/components/challenge/Management/Attachment";
 
 export default {
   name: "Model",
-  components: {Static, Dynamic, Common},
+  components: {Attachment, Flag, Static, Dynamic, Common},
   data() {
     return {
       model: {},

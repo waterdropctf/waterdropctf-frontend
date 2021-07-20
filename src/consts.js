@@ -58,6 +58,12 @@ export default {
                 dynamic: 2,
             }
         },
+        flag: {
+            type: {
+                static: 1,
+                dynamic: 2,
+            }
+        },
         node: {
             type: {
                 directory: 0,

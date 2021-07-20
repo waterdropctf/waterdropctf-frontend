@@ -16,18 +16,16 @@
     <b-input-group prepend="Hint">
       <b-form-input :state="validate_hint()" type="text" v-model="model.hint" placeholder="hint (json)"></b-form-input>
     </b-input-group>
-    <hr>
-    <Attachment :model="model"/>
+    <!--    <hr>-->
   </div>
 </template>
 
 <script>
-import Attachment from "@/components/challenge/Management/Attachment";
 import consts from "@/consts";
 
 export default {
   name: "Common",
-  components: {Attachment},
+  components: {},
   props: {
     model: Object
   },
