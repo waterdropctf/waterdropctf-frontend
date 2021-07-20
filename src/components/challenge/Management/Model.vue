@@ -2,16 +2,16 @@
   <b-modal id="modal-challenge-model" :title="title" size="xl">
     <form @submit.prevent="saveResource()">
       <div class="row">
-        <Common :model="model" class="col"/>
+        <div class="col">
+          <Common :model="model"/>
+          <hr>
+          <Dynamic :model="model" v-if="model.challenge_type===consts.Model.challenge.type.dynamic"/>
+          <Static v-else/>
+        </div>
         <!--        <hr>-->
         <div class="col">
           <Attachment :model="model"/>
           <flag :model="model"/>
-        </div>
-        <!--        <hr>-->
-        <div class="col">
-          <Dynamic :model="model" v-if="model.challenge_type===consts.Model.challenge.type.dynamic"/>
-          <Static v-else/>
         </div>
       </div>
     </form>
