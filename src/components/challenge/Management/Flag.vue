@@ -2,9 +2,9 @@
   <div>
     <b-form-group label="Flag">
       <b-input-group prepend="Flag Type">
-        <b-form-select v-model="model.flag_type" :options="flagType_options"></b-form-select>
+        <b-form-select v-model="flag_type" :options="flagType_options"></b-form-select>
       </b-input-group>
-      <div v-if="model.flag_type===1">
+      <div v-if="flag_type===consts.Model.flag.type.static">
         <b-input-group prepend="Flag">
           <b-form-input type="text" v-model="model.flag"></b-form-input>
         </b-input-group>
@@ -23,9 +23,19 @@ export default {
   },
   data() {
     return {
+      consts: consts,
+      flag_type: consts.Model.flag.type.static,
       flagType_options: [consts.Model.flag.type.static, consts.Model.flag.type.dynamic]
     }
-  }
+  },
+  watch: {
+    flag_type: function () {
+      this.model.flag_type = this.flag_type
+    }
+  },
+  created() {
+    this.model.flag_type = this.flag_type
+  },
 }
 </script>
 

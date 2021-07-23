@@ -8,7 +8,7 @@
           <Dynamic :model="model" v-if="model.challenge_type===consts.Model.challenge.type.dynamic"/>
           <Static v-else/>
         </div>
-        <!--        <hr>-->
+        <!--                <hr>-->
         <div class="col">
           <Attachment :model="model"/>
           <flag :model="model"/>
@@ -22,26 +22,30 @@
 import consts from "@/consts";
 import lightweightRestful from "vue-lightweight_restful";
 import Common from "@/components/challenge/Management/Common";
+import Attachment from "@/components/challenge/Management/Attachment";
+import Flag from "@/components/challenge/Management/Flag";
 import Dynamic from "@/components/challenge/Management/Dynamic";
 import Static from "@/components/challenge/Management/Static";
-import Flag from "@/components/challenge/Management/Flag";
-import Attachment from "@/components/challenge/Management/Attachment";
 
 export default {
   name: "Model",
-  components: {Attachment, Flag, Static, Dynamic, Common},
+  components: {Static, Dynamic, Attachment, Flag, Common},
   data() {
     return {
+      challenge_type: consts.Model.challenge.type.static,
       model: {},
       consts: consts,
     }
-  },
-  created() {
   },
   computed: {
     title() {
       return this.model.id === undefined ? 'New Challenge' : `Edit Challenge # ${this.model.id}`
     }
+  },
+  watch: {
+    'model.challenge_type': function () {
+      this.challenge_type = this.model.challenge_type
+    },
   },
   methods: {
     async saveResource() {
@@ -54,7 +58,7 @@ export default {
           caller: this,
         })
       }
-      this.model = {}
+      this.model = this.empty
     },
   }
 }

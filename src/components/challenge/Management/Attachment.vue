@@ -5,7 +5,7 @@
       <b-form-input type="text" v-model="attachment.description" placeholder="description"
                     style="margin-top: 2px;"></b-form-input>
       <b-form-file @change="onFileChangeAttachment" v-model="attachment.file"
-                   :state="Boolean(model.attachment_id)"
+                   :state="model.attachment_id===undefined || Boolean(model.attachment_id)"
                    placeholder="Choose a file..." drop-placeholder="Drop file here..."
                    style="margin-top: 2px;"></b-form-file>
       <b-button @click="attachment.file = null" style="margin-top: 2px;">reset</b-button>
