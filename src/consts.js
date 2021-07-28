@@ -10,6 +10,8 @@ const remote_config = 'remote_config'
 const challenge = 'challenge'
 const attachment = 'attachment'
 const compose = 'compose'
+const static_ = 1
+const dynamic = 2
 
 const api = {
     v1: {
@@ -54,14 +56,22 @@ export default {
     Model: {
         challenge: {
             type: {
-                static: 1,
-                dynamic: 2,
+                static: static_,
+                dynamic: dynamic,
+                options: [
+                    {value: static_, text: 'static'},
+                    {value: dynamic, text: 'dynamic'},
+                ]
             }
         },
         flag: {
             type: {
-                static: 1,
-                dynamic: 2,
+                static: static_,
+                dynamic: dynamic,
+                options: [
+                    {value: static_, text: 'static'},
+                    {value: dynamic, text: 'dynamic'},
+                ]
             }
         },
         node: {

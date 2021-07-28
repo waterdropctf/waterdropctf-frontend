@@ -9,6 +9,19 @@
           <b-form-input type="text" v-model="model.flag"></b-form-input>
         </b-input-group>
       </div>
+      <div v-if="flag_type===consts.Model.flag.type.dynamic">
+        <div class="row">
+          <b-input-group prepend="uid" class="col">
+            <b-form-input type="number" v-model="model.uid"></b-form-input>
+          </b-input-group>
+          <b-input-group prepend="gid" class="col">
+            <b-form-input type="number" v-model="model.gid"></b-form-input>
+          </b-input-group>
+          <b-input-group prepend="perm" class="col">
+            <b-form-input type="number" v-model="model.mode"></b-form-input>
+          </b-input-group>
+        </div>
+      </div>
     </b-form-group>
   </div>
 </template>
@@ -24,8 +37,8 @@ export default {
   data() {
     return {
       consts: consts,
-      flag_type: consts.Model.flag.type.static,
-      flagType_options: [consts.Model.flag.type.static, consts.Model.flag.type.dynamic]
+      flag_type: consts.Model.flag.type.dynamic,
+      flagType_options: consts.Model.flag.type.options
     }
   },
   watch: {
@@ -35,6 +48,9 @@ export default {
   },
   created() {
     this.model.flag_type = this.flag_type
+    this.model.uid = 0
+    this.model.gid = 0
+    this.model.mode = 400
   },
 }
 </script>

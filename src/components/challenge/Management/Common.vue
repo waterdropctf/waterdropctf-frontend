@@ -36,7 +36,7 @@ export default {
       consts: consts,
       challenge_type: consts.Model.challenge.type.static,
       categories_options: [],
-      types_options: [consts.Model.challenge.type.static, consts.Model.challenge.type.dynamic],
+      types_options: consts.Model.challenge.type.options,
     }
   },
   watch: {
