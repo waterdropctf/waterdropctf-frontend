@@ -11,6 +11,7 @@
           :challenge="challenge"
           v-on:edit_challenge="editChallenge"
           v-for="challenge in challenges" v-bind:key="challenge.id"
+          :instances="instances[challenge.id]"
       />
     </b-card-group>
     <Model ref="model"/>
@@ -29,6 +30,7 @@ export default {
   data() {
     return {
       challenges: [],
+      instances: {},
       is_admin: false,
     }
   },
@@ -37,15 +39,23 @@ export default {
     if (lightweightRestful.api.loggedIn() && this.$cookies.get("is_admin") === "true") {
       this.is_admin = true
     }
+    this.getInstances()
   },
   methods: {
+    async getInstances() {
+      let instances = await lightweightRestful.api.listResource(consts.api.v1, {
+        caller: this,
+      })
+      this.instances = instances
+    },
     async listChallenges() {
       this.challenges = await lightweightRestful.api.listResource(consts.api.v1.challenge, {
         caller: this,
       })
     },
     editChallenge(challenge) {
-      this.$refs.model.model = JSON.parse(JSON.stringify(challenge))
+      let model = JSON.parse(JSON.stringify(challenge))
+      this.$refs.model.model = model
       this.$bvModal.show("modal-challenge-model")
     },
     toggleAdd() {

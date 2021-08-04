@@ -1,6 +1,6 @@
 <template>
-  <b-modal id="modal-challenge-model" :title="title" size="xl">
-    <form @submit.prevent="saveResource()">
+  <b-modal id="modal-challenge-model" :title="title" size="xl" @ok="saveResource">
+    <form>
       <div class="row">
         <div class="col">
           <Common :model="model"/>
@@ -32,7 +32,6 @@ export default {
   components: {Static, Dynamic, Attachment, Flag, Common},
   data() {
     return {
-      challenge_type: consts.Model.challenge.type.static,
       model: {},
       consts: consts,
     }
@@ -42,13 +41,9 @@ export default {
       return this.model.id === undefined ? 'New Challenge' : `Edit Challenge # ${this.model.id}`
     }
   },
-  watch: {
-    'model.challenge_type': function () {
-      this.challenge_type = this.model.challenge_type
-    },
-  },
   methods: {
     async saveResource() {
+      console.log("save resource")
       if (this.model.id) {
         await lightweightRestful.api.updateResource(consts.api.v1.challenge, this.model.id, this.model, {
           caller: this,

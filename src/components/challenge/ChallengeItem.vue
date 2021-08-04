@@ -11,12 +11,13 @@
         <Delete v-if="is_admin"/>
         <b-badge variant="success" v-if="challenge.solved" style="line-height:200%">solved</b-badge>
       </div>
-      <Body :challenge="challenge"/>
+      <Body :challenge="challenge" :instances="instances"/>
       <div slot="footer" class="row">
         <div class="col"/>
         <Submit :challenge="challenge"/>
         <DownloadAttachment :attachment_id="challenge.attachment_id"/>
-        <ApplyContainer :logged_in="logged_in" :is_dynamic="!is_static_challenge(challenge.type)"/>
+        <ApplyContainer :challenge="challenge" :logged_in="logged_in"
+                        :is_dynamic="!is_static_challenge(challenge.type)"/>
       </div>
     </b-card>
   </div>
@@ -38,6 +39,7 @@ export default {
   props: {
     challenge: Object,
     is_admin: Boolean,
+    instances: Array,
   },
   data: function () {
     return {

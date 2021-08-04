@@ -8,6 +8,7 @@ const directory = 'directory'
 const file = 'file'
 const remote_config = 'remote_config'
 const challenge = 'challenge'
+const instance = 'instance'
 const attachment = 'attachment'
 const compose = 'compose'
 const static_ = 1
@@ -16,6 +17,7 @@ const dynamic = 2
 const api = {
     v1: {
         challenge: `${v1}/${challenge}`,
+        instance: `${v1}/${instance}`,
         attachment: `${v1}/${attachment}`,
         compose: `${v1}/${compose}`,
         auth: `${v1}/${auth}`,
@@ -33,6 +35,7 @@ export default {
         v1: {
             remote_config: api.v1.remote_config,
             challenge: api.v1.challenge,
+            instance: api.v1.instance,
             attachment: api.v1.attachment,
             compose: api.v1.compose,
             auth: api.v1.auth,
@@ -62,6 +65,16 @@ export default {
                     {value: static_, text: 'static'},
                     {value: dynamic, text: 'dynamic'},
                 ]
+            }
+        },
+        instance: {
+            status: {
+                created: 1,
+                pulled: 2,
+                deploying: 3,
+                deploy_task_assigned: 4,
+                ready: 5,
+                removed: 6,
             }
         },
         flag: {

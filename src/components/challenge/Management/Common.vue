@@ -32,9 +32,13 @@ export default {
     model: Object
   },
   data() {
+    let challenge_type = this.model.challenge_type
+    if (challenge_type === undefined) {
+      challenge_type = consts.Model.challenge.type.static
+    }
     return {
       consts: consts,
-      challenge_type: consts.Model.challenge.type.static,
+      challenge_type: challenge_type,
       categories_options: [],
       types_options: consts.Model.challenge.type.options,
     }

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import api from "@/api";
+import lightweightRestful from "vue-lightweight_restful";
 
 export default {
   name: "ApplyContainer",
@@ -26,17 +26,26 @@ export default {
         window.location = '/'
       }
       this.loading = true
-      this.challenge = Object.assign({}, this.challenge, {applying: true})
-      this.challenge.applying = true
+      // this.challenge = Object.assign({}, this.challenge, {applying: true})
+      // this.challenge.applying = true
       this.applyingStatus = 'creating'
       this.updateProgress()
-      await api.deploy(id)
+      await this.deploy(id)
       this.applyingStatus = 'ready'
       this.$emit('refresh_instance')
-      this.challenge = Object.assign({}, this.challenge, {applying: false})
-      this.challenge.applying = false
+      // this.challenge = Object.assign({}, this.challenge, {applying: false})
+      // this.challenge.applying = false
       this.loading = false
     },
+    updateProgress() {
+
+    },
+    async deploy(id) {
+      let path = `/api/v1/challenge/${id}/deploy/block`
+      await lightweightRestful.api.post(path, null, null, {
+        caller: this,
+      })
+    }
   }
 }
 </script>

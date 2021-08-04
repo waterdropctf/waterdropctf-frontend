@@ -1,5 +1,8 @@
 <template>
   <div>
+    <b-input-group prepend="Address Template">
+      <b-form-input type="text" v-model="model.address_template"></b-form-input>
+    </b-input-group>
     <b-form-group label="Compose">
       <div>
         <b-tabs content-class="mt-3">

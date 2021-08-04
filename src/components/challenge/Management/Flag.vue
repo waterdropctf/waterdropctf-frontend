@@ -35,9 +35,13 @@ export default {
     model: Object,
   },
   data() {
+    let flag_type = this.model.flag_type
+    if (flag_type === undefined) {
+      flag_type = consts.Model.flag.type.dynamic
+    }
     return {
       consts: consts,
-      flag_type: consts.Model.flag.type.dynamic,
+      flag_type: flag_type,
       flagType_options: consts.Model.flag.type.options
     }
   },
