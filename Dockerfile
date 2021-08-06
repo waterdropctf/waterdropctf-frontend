@@ -10,4 +10,6 @@ RUN npm run-script build
 
 FROM nginx:1.21
 COPY --from=builder /frontend/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/backend.conf
+COPY backend.conf.template /etc/nginx/conf.d/backend.conf.template
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT "/entrypoint.sh"

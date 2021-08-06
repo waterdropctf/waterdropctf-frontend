@@ -3,5 +3,7 @@ services:
   frontend:
     image: swr.cn-south-1.myhuaweicloud.com/waterdropctf/waterdropctf-frontend:v0.1
     restart: always
+    environment:
+      - ENGINE=http://engine:8001
     ports:
       - "8002:80"

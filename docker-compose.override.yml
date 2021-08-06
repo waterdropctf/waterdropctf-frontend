@@ -2,3 +2,5 @@ version: '3'
 services:
   frontend:
     build: .
+    environment:
+      - ENGINE=http://172.17.0.1:8001
