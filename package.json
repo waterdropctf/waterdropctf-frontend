@@ -12,7 +12,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-cookies": "^1.7.4",
-    "vue-lightweight_restful": "^1.1.18",
+    "vue-lightweight_restful": "^1.1.19",
     "vue-router": "^3.5.2",
     "vue-sidebar-menu": "^4.8.1",
     "format-unicorn": "^1.1.1"
