@@ -1,5 +1,6 @@
 <template>
   <div id="app" :class="[{'collapsed' : collapsed}]">
+    <init-check v-show="false"/>
     <router-view class="ml-3"/>
     <Menu :is_admin="is_admin" v-on:onToggleCollapse="onToggleCollapse"/>
   </div>
@@ -9,10 +10,11 @@
 
 import Menu from "@/components/Menu";
 import lightweightRestful from "vue-lightweight_restful";
+import InitCheck from "@/components/init/InitCheck";
 
 export default {
   name: 'App',
-  components: {Menu},
+  components: {InitCheck, Menu},
 
   data() {
     return {

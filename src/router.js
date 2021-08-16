@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from "@/components/Index";
 import EventItem from "@/components/event/EventItem";
 import Challenge from "@/components/challenge/Challenge";
+import Init from "@/components/init/Init";
 
 Vue.use(Router)
 
@@ -12,6 +13,11 @@ export default new Router({
             path: '/',
             name: 'Index',
             component: Index
+        },
+        {
+            path: '/init',
+            name: 'Init',
+            component: Init
         },
         {
             path: '/challenge',

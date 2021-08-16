@@ -1,5 +1,6 @@
 const api_ = '/api'
 const v1 = `${api_}/v1`
+const user = 'user'
 const repository = 'repository'
 const auth = 'auth'
 const initialize = 'initialize'
@@ -16,6 +17,7 @@ const dynamic = 2
 
 const api = {
     v1: {
+        user: `${v1}/${user}`,
         challenge: `${v1}/${challenge}`,
         instance: `${v1}/${instance}`,
         attachment: `${v1}/${attachment}`,
@@ -33,6 +35,11 @@ export default {
     BaseUrl: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8001' : '',
     api: {
         v1: {
+            user: {
+                user: api.v1.user,
+                init: `${api.v1.user}/init`,
+                count: `${api.v1.user}/count`
+            },
             remote_config: api.v1.remote_config,
             challenge: api.v1.challenge,
             instance: api.v1.instance,
