@@ -46,7 +46,15 @@ export default {
       let instances = await lightweightRestful.api.listResource(consts.api.v1.instance, {
         caller: this,
       })
-      this.instances = instances
+      let instanceMapByChallengeId = {}
+      instances.forEach(function (instance) {
+        instance.exposed_host_ports = instance.exposed_host_ports.length > 0 ? JSON.parse(instance.exposed_host_ports) : {}
+        if (instanceMapByChallengeId[instance.challenge_id] === undefined) {
+          instanceMapByChallengeId[instance.challenge_id] = []
+        }
+        instanceMapByChallengeId[instance.challenge_id].push(instance)
+      })
+      this.instances = instanceMapByChallengeId
     },
     async listChallenges() {
       this.challenges = await lightweightRestful.api.listResource(consts.api.v1.challenge, {

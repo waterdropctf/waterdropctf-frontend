@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       instances_example: [
-        {status: consts.Model.instance.status.ready, exposed_host_ports: 30000, id: 1}
+        {status: consts.Model.instance.status.ready, exposed_host_ports: {"challenge": 30000}, id: 1}
       ],
     }
   },
@@ -36,8 +36,9 @@ export default {
     isReady(status) {
       return status === consts.Model.instance.status.ready
     },
-    instanceTemplateValue(ports) {
-      return ports
+    instanceTemplateValue(object) {
+      object['hostname'] = document.location.hostname
+      return object
     },
     stopInstance(instanceId) {
       console.log("stop:", instanceId)
