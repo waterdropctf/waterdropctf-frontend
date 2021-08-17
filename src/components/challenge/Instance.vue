@@ -25,7 +25,11 @@ export default {
   data() {
     return {
       instances_example: [
-        {status: consts.Model.instance.status.ready, exposed_host_ports: {"challenge": 30000}, id: 1}
+        {
+          status: consts.Model.instance.status.ready,
+          exposed_host_ports: {"challenge": {"host": "127.0.0.1", "ports": [30000]}},
+          id: 1
+        }
       ],
     }
   },
@@ -36,8 +40,19 @@ export default {
     isReady(status) {
       return status === consts.Model.instance.status.ready
     },
-    instanceTemplateValue(object) {
-      object['hostname'] = document.location.hostname
+    instanceTemplateValue(accessInfos) {
+      let object = {}
+      console.log("accessInfos: ", accessInfos)
+      Object.keys(accessInfos).forEach(function (name) {
+        let accessInfo = accessInfos[name]
+        console.log(name, accessInfo)
+        object['hostname'] = accessInfo.host
+        if (accessInfo.host === undefined || accessInfo.host.length === 0) {
+          object['hostname'] = document.location.hostname
+        }
+        object[name] = accessInfo.ports[0]
+      })
+      console.log(object)
       return object
     },
     stopInstance(instanceId) {
