@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     async saveResource() {
-      console.log("save resource")
       if (this.model.id) {
         await lightweightRestful.api.updateResource(consts.api.v1.challenge, this.model.id, this.model, {
           caller: this,
@@ -54,6 +53,7 @@ export default {
         })
       }
       this.model = this.empty
+      this.$emit("refreshChallenges")
     },
   }
 }

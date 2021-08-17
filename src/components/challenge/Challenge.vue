@@ -14,7 +14,7 @@
           :instances="instances[challenge.id]"
       />
     </b-card-group>
-    <Model ref="model"/>
+    <Model ref="model" v-on:refreshChallenges="refreshChallenges"/>
   </div>
 </template>
 
@@ -61,6 +61,9 @@ export default {
     toggleAdd() {
       this.$refs.model.model = {}
       this.$bvModal.show("modal-challenge-model")
+    },
+    refreshChallenges() {
+      this.listChallenges()
     }
   }
 }

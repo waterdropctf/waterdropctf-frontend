@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isDynamicChallenge()">
-      <b-list-group v-for="(instance, instance_id) in instances_example" :key="instance_id">
+      <b-list-group v-for="(instance, instance_id) in instances" :key="instance_id">
         <b-list-group-item v-if="isReady(instance.status)">
           {{ challenge.address_template.formatUnicorn(instanceTemplateValue(instance.exposed_host_ports)) }}
           <b-button @click.prevent="stopInstance(instance.id)" variant="light">
