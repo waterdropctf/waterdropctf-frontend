@@ -38,7 +38,7 @@ export default {
     }
     return {
       consts: consts,
-      challenge_type: challenge_type,
+      challenge_type: 0,
       categories_options: [],
       types_options: consts.Model.challenge.type.options,
     }
@@ -47,6 +47,10 @@ export default {
     challenge_type: function () {
       this.$set(this.model, 'challenge_type', this.challenge_type)
     }
+  },
+  created() {
+    this.challenge_type = this.model.challenge_type === undefined ?
+        consts.Model.challenge.type.static : this.model.challenge_type
   },
   methods: {
     validate_hint() {
