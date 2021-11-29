@@ -32,10 +32,6 @@ export default {
     model: Object
   },
   data() {
-    let challenge_type = this.model.challenge_type
-    if (challenge_type === undefined) {
-      challenge_type = consts.Model.challenge.type.static
-    }
     return {
       consts: consts,
       challenge_type: 0,
