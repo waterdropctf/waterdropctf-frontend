@@ -17,7 +17,7 @@
         <Submit :challenge="challenge"/>
         <DownloadAttachment :attachment_id="challenge.attachment_id"/>
         <ApplyContainer :challenge="challenge" :logged_in="logged_in"
-                        :is_dynamic="!is_static_challenge(challenge.type)"/>
+                        :is_dynamic="!is_static_challenge(challenge.challenge_type)"/>
       </div>
     </b-card>
   </div>
@@ -60,6 +60,7 @@ export default {
   },
   methods: {
     is_static_challenge(type) {
+      console.log("challenge's type:", type)
       return type === consts.Model.challenge.type.static
     }
   }
