@@ -50,10 +50,26 @@ export default {
       uploadingCompose: false,
     }
   },
+  created() {
+    this.refreshCompose()
+  },
   methods: {
+    async refreshCompose() {
+      let composes = await lightweightRestful.api.listResource(consts.api.v1.compose, {
+        caller: this,
+      })
+      this.composeOptions = []
+      for (let compose of composes) {
+        this.composeOptions.push({
+          value: parseInt(compose.ID),
+          text: compose.name
+        })
+      }
+    },
     selected() {
+      let model = this.model.compose_id
       let composeOption = this.composeOptions.find(function (v) {
-        return v.value === this.model.compose_id
+        return v.value === model
       })
       return composeOption !== undefined ? composeOption['text'] : ''
     },
