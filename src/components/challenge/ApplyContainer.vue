@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <b-button @click.prevent="applyContainer(challenge.id)" variant="light"
+      <b-button @click.prevent="applyContainer(challenge.ID)" variant="light"
                 v-if="is_dynamic">
         <i class="fab fa-docker text-primary"><strong> apply </strong></i>
       </b-button>

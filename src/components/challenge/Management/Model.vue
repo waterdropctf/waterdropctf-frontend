@@ -38,13 +38,13 @@ export default {
   },
   computed: {
     title() {
-      return this.model.id === undefined ? 'New Challenge' : `Edit Challenge # ${this.model.id}`
+      return this.model.ID === undefined ? 'New Challenge' : `Edit Challenge # ${this.model.ID}`
     }
   },
   methods: {
     async saveResource() {
-      if (this.model.id) {
-        await lightweightRestful.api.updateResource(consts.api.v1.challenge, this.model.id, this.model, {
+      if (this.model.ID) {
+        await lightweightRestful.api.updateResource(consts.api.v1.challenge, this.model.ID, this.model, {
           caller: this,
         })
       } else {
