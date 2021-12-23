@@ -52,7 +52,7 @@ export default {
           caller: this,
         })
       }
-      this.model = this.empty
+      this.model = {}
       this.$emit("refreshChallenges")
     },
   }
