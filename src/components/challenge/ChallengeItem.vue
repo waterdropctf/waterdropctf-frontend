@@ -14,7 +14,7 @@
       <Body :challenge="challenge" :instances="instances"/>
       <div slot="footer" class="row">
         <div class="col"/>
-        <Submit :challenge="challenge"/>
+        <Submit :challenge="challenge" :logged_in="logged_in"/>
         <DownloadAttachment :attachment_id="challenge.attachment_id"/>
         <ApplyContainer :challenge="challenge" :logged_in="logged_in"
                         :is_dynamic="!is_static_challenge(challenge.challenge_type)"/>

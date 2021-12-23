@@ -19,6 +19,7 @@ import api from "@/api";
 export default {
   name: "Submit",
   props: {
+    logged_in: Boolean,
     challenge: Object,
   },
   data() {
