@@ -5,6 +5,7 @@ import EventItem from "@/components/event/EventItem";
 import Challenge from "@/components/challenge/Challenge";
 import Init from "@/components/init/Init";
 import Compose from "@/components/compose/Compose";
+import Instance from "@/components/instance/Instance";
 
 Vue.use(Router)
 
@@ -50,11 +51,11 @@ export default new Router({
             name: 'Compose Manage',
             component: Compose
         },
-        // {
-        //     path: '/instance',
-        //     name: 'Instance Manage',
-        //     component: Instance
-        // },
+        {
+            path: '/instance',
+            name: 'Instance Manage',
+            component: Instance
+        },
         // {
         //     path: '/containers',
         //     name: 'Containers Manage',
