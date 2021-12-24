@@ -62,8 +62,7 @@ export default {
       })
     },
     editChallenge(challenge) {
-      let model = JSON.parse(JSON.stringify(challenge))
-      this.$refs.model.model = model
+      this.$refs.model.model = JSON.parse(JSON.stringify(challenge))
       this.$bvModal.show("modal-challenge-model")
     },
     toggleAdd() {
