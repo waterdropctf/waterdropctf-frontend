@@ -10,8 +10,8 @@
           :is_admin="is_admin"
           :challenge="challenge"
           v-on:edit_challenge="editChallenge"
-          v-for="challenge in challenges" v-bind:key="challenge.id"
-          :instances="instances[challenge.id]"
+          v-for="challenge in challenges" v-bind:key="challenge.ID"
+          :instances="instances[challenge.ID]"
       />
     </b-card-group>
     <Model ref="model" v-on:refreshChallenges="refreshChallenges"/>
