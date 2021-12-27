@@ -91,6 +91,7 @@ export default {
       let resp = await lightweightRestful.api.createResource(consts.api.v1.compose, this.compose, {
         caller: this,
       })
+      await this.refreshCompose()
       this.model.compose_id = resp.id
       this.compose = {}
       this.uploadingCompose = false
