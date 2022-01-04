@@ -42,7 +42,10 @@ export default {
             },
             remote_config: api.v1.remote_config,
             challenge: api.v1.challenge,
-            instance: api.v1.instance,
+            instance: {
+                instance: api.v1.instance,
+                item: (id) => `${api.v1.instance}/${id}`,
+            },
             attachment: api.v1.attachment,
             compose: api.v1.compose,
             auth: api.v1.auth,

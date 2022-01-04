@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async getInstances() {
-      let instances = await lightweightRestful.api.listResource(consts.api.v1.instance, {
+      let instances = await lightweightRestful.api.listResource(consts.api.v1.instance.instance, {
         caller: this,
       })
       let instanceMapByChallengeId = {}
